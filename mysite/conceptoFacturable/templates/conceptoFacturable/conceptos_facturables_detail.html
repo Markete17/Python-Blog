@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" name="card_header">
 
         <h3> {{concepto.concepto}} - Detalle</h3>
     </div>
@@ -12,8 +12,9 @@
       <p class="card-text"><b>Operador:</b> {{concepto.operador}}</p>
       <p class="card-text"><b>Concepto Operador:</b> {{concepto.concepto_operador}}</p>
       <p class="card-text"><b>Ambiente:</b> {{concepto.ambito}}</p>
-      <a class="btn btn-primary mx-1" href="{% url 'conceptos_facturables_list' %}">Volver</a>
-      <a class="btn btn-primary mx-1" href="{% url 'conceptos_facturables_editar' pk=concepto.pk %}">Editar</a>
+      <a class="btn btn-secondary mx-1" href="{% url 'conceptos_facturables_list' %}">Volver</a>
+      <a class="btn btn-primary mx-1" name="update_button" href="{% url 'conceptos_facturables_editar' pk=concepto.pk %}">Editar</a>
+      <a class="btn btn-danger mx-1" name="delete_button" href="{% url 'conceptos_facturables_eliminar' pk=concepto.pk %}">Eliminar</a>
     </div>
 </div>
 {% endblock content %}

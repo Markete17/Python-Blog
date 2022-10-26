@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import ConceptoFacturable
 from .forms import ConceptoFacturableForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def conceptos_facturables_list(request):
@@ -34,6 +36,8 @@ def conceptos_facturables_nuevo(request):
             {'form': form})
 
 
+@login_required
+@staff_member_required
 def conceptos_facturables_editar(request, pk):
     concepto = get_object_or_404(ConceptoFacturable, pk=pk)
     if request.method == 'POST':
@@ -48,3 +52,22 @@ def conceptos_facturables_editar(request, pk):
             request,
             'conceptoFacturable/conceptos_facturables_editar.html',
             {'form': form})
+
+
+@login_required
+@staff_member_required
+def conceptos_facturables_eliminar(request, pk):
+    concepto = get_object_or_404(ConceptoFacturable, pk=pk)
+    concepto.delete()
+    conceptos = ConceptoFacturable.objects.all()
+    return render(
+        request,
+        'conceptoFacturable/conceptos_facturables_list.html',
+        {"conceptos": conceptos})
+
+
+def login(request):
+    return render(
+        request,
+        'conceptoFacturable/login.html',
+        {})

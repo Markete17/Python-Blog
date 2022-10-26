@@ -10,4 +10,8 @@ urlpatterns = [
          name='conceptos_facturables_nuevo'),
     path("<int:pk>/editar", views.conceptos_facturables_editar,
          name='conceptos_facturables_editar'),
+    path("<int:pk>/eliminar", views.conceptos_facturables_eliminar,
+         name='conceptos_facturables_eliminar'),
+    path("login/", views.login,
+         name='login')
 ]

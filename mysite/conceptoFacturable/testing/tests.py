@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import ConceptoFacturable
+from conceptoFacturable.models import ConceptoFacturable
 
 
 # Create your tests here.

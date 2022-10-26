@@ -7,6 +7,6 @@
     </div>
     <form method="POST" class="concepto-form">{% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="save btn btn-primary mt-2">Guardar</button>
+        <button name="save_button" type="submit" class="save btn btn-primary mt-2">Guardar</button>
     </form>
 {% endblock content %}
